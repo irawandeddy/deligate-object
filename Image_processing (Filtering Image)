@@ -1,0 +1,18 @@
+I = imread('yourimagefile');
+I = imread ('mandrill.jpg');
+Gray = rgb2gray (I);
+figure,imshow(I),title('citra input');
+figure,imshow (Gray), title ('citra gray');
+FilterMax = nlfilter (Gray, [3,3], 'max(x(:))');
+imshow (FilterMax), title ('hasil filter maks');
+If = nlfilter(Gray, [3,3], 'min(x(:))');
+figure,imshow(If),title('hasil filter min');
+noise=imnoise(Gray, 'salt & pepper', 0.03);
+noise2=imnoise(Gray,'Gaussian', 0.2);
+awal=medfilt2(Gray);
+k=medfilt2(noise);
+k2=medfilt2(noise2);
+figure,imshow(awal),title('citra median awal');
+figure,imshow(k),title('citra median noise');
+figure,imshow(k2),title('citra median noise2');
+
